@@ -14,49 +14,60 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
 <Layout title="About">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
+      <Fragment slot="title"></Fragment>
+      <Fragment slot="desc"></Fragment>
     </Sectionhead>
 
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+    <div class="flex flex-col gap-3 mx-auto max-w-2xl mt-16">
       <h2 class="font-bold text-3xl text-gray-800">
-        Empowering the world with Astro.
+        coditva
       </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                widths={[200, 400]}
-                aspectRatio="1:1"
-                background="#ffffff"
-                fit="cover"
-                position="center"
-                class="w-full rounded-md rounded transition group-hover:-translate-y-1 group-hover:shadow-xl"
-              />
-            </div>
 
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">
-                {teamMemberEntry.data.name}
-              </h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
-            </div>
-          </div>
-        ))
-      }
+      <p class="leading-relaxed text-slate-500">
+        \[co-dit-v_ah_\]
+      </p>
+
+      <p class="text-sm leading-relaxed text-slate-500">
+        <i>noun</i>
+      </p>
+
+      <p class="">
+        The quality of being one with the code.<br>
+        <em>It derives its roots from English "code" and Sanskrit "-itva", meaning the quality of [being or having something].</em>
+      </p>
+
+      <p>
+        e.g. <em>"Look at them code, they've achieved <strong>coditva</strong>."</em><br />
+        e.g. <em>"Look at this method. It's the ultimate <strong>coditva</strong>."</em>
+      </p>
+
+      <hr />
+
+      <p>
+        <a class="underline" href="https://coditva.dev/">coditva.dev</a> is an online publication
+        of thoughts and ideas of
+        <strong><a class="underline" href="https://coditva.dev/me">
+            Utkarsh Maheshwari
+        </a></strong>.
+        It is not the best place on the internet, but it's his
+        little corner and
+        <a class="underline" href="https://en.wikipedia.org/wiki/Cogito,_ergo_sum">
+            proof of existence
+        </a>.
+      </p>
+
+      <p>It is updated <em>irregularly</em>.</p>
+
+      <figure class="flex flex-col items-center">
+        <img src="https://imgs.xkcd.com/comics/blogging.png" class="flex-initial" alt="Obligatory xkcd" loading="lazy">
+        <figcaption>Obligatory xkcd</figcaption>
+      </figure>
+
+      <hr />
+
+      <p>If you're looking to know more about Utkarsh, email him at <strong>hi [at] coditva [dot] dev</strong>.</p>
+
+      <p>He has previously attempted blogging. You can find the archive at <a class="underline" href="https://coditva.github.io/">his old blog</a>.</p>
     </div>
   </Container>
 </Layout>
