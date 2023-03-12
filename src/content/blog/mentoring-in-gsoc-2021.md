@@ -6,7 +6,7 @@ publishDate: "2021-06-05 05:30:00"
 title: "Mentoring in GSoC 2021"
 snippet: "This year is the first time I'm mentoring in GSoC. Here's why I decided to mentor, the progress until now and what's up next."
 image:
-  src: "__GHOST_URL__/content/images/2021/05/Postman-GSoC-2021.png"
+  src: "https://blog.postman.com/wp-content/uploads/2021/03/Postman-GSoC-2021.png"
   alt: "Mentoring in GSoC 2021"
 tags: ["GSoC"]
 category: ""

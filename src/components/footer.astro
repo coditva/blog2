@@ -1,6 +1,18 @@
-<footer class="my-20">
-  <p class="text-center text-sm text-slate-500">
-    Copyright © {new Date().getFullYear()} Astroship. All rights reserved.
+---
+import Bottom from "@components/bottom/bottom.astro";
+---
+<footer class="my-10 mt-20 md:mt-40">
+  <Bottom />
+  <p class="text-center text-xs text-slate-500 mt-20">
+    This site is open source. You can find the source at
+    <a
+      href="https://github.com/coditva/blog2"
+      target="_blank"
+      rel="noopener"
+      class="hover:underline"
+    >
+        GitHub/<b>coditva/blog2</b>
+    </a>
   </p>
   <!--
     Can we ask you a favor 🙏
@@ -8,7 +20,7 @@
     or Purchase a commercial license from https://web3templates.com
   -->
   <p class="text-center text-xs text-slate-500 mt-1">
-    Made by <a
+    Forked from Astroship by <a
       href="https://web3templates.com"
       target="_blank"
       rel="noopener"

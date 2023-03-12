@@ -1,18 +1,67 @@
 ---
-import Container from "@components/container.astro";
-import Cta from "@components/cta.astro";
-import Features from "@components/features.astro";
-import Footer from "@components/footer.astro";
-import Hero from "@components/hero.astro";
-import Logos from "@components/logos.astro";
+import { getCollection } from "astro:content";
+import { Picture } from "@astrojs/image/components";
 import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+
+// Filter blog entries with 'draft: false' & date before current date
+const publishedBlogEntries = await getCollection("blog", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+// Sort content entries by publication date
+publishedBlogEntries.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
 ---
 
-<Layout title="">
+<Layout>
   <Container>
-    <Hero />
-    <Features />
-    <Logos />
-    <Cta />
+    <main class="mt-16">
+      <ul class="grid gap-16 max-w-4xl mx-auto">
+        {
+          publishedBlogEntries.map((blogPostEntry, index) => (
+            <li>
+              <a href={`/${blogPostEntry.slug}`}>
+                <div class="group/item md:h-48 grid md:grid-cols-3 gap-5 md:gap-10 items-center">
+                  <Picture
+                    src={blogPostEntry.data.image.src}
+                    alt={blogPostEntry.data.image.alt}
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    widths={[200, 400, 800]}
+                    aspectRatio="16:9"
+                    background="#ffffff"
+                    fit="cover"
+                    position="center"
+                    loading={index <= 2 ? "eager" : "lazy"}
+                    decoding={index <= 2 ? "sync" : "async"}
+                    class="w-full rounded-md group-hover/item:opacity-80 transition-opacity duration-300"
+                  />
+                  <div class="col-span-1 md:col-span-2 grid gap-2">
+                    <div class="flex mt-3 font-mono text-xs">
+                      <time
+                        class="text-gray-500"
+                        datetime={blogPostEntry.data.publishDate.toISOString()}>
+                        {blogPostEntry.data.publishDate.toDateString()}
+                      </time>
+                    </div>
+
+                    <h2 class="text-5xl font-medium leading-1 tracking-tight mt-1 group-hover/item:text-blue-500 transition-colors duration-300">
+                      {blogPostEntry.data.title}
+                    </h2>
+
+                    <h4 class="text-base text-gray-500 leading-6 tracking-tight mt-1">
+                      {blogPostEntry.data.snippet}
+                    </h4>
+
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
   </Container>
 </Layout>

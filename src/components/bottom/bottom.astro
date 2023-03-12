@@ -1,0 +1,29 @@
+---
+import Container from "@components/container.astro";
+---
+
+<Container>
+  <div class="min-w-full flex justify-between">
+    <div>
+      <a href="/" class="text-2xl hover:text-blue-500 transition-colors duration-300">
+        <span class="font-medium">coditva.dev</span>
+      </a>
+      <p class="text-sm mt-2">
+        Introvert, systems programmer, reader, wannabe chef, nighttime philosopher.
+      </p>
+    </div>
+    <div class="ml-10 my-2">
+      <ul class="flex flex-col justify-center items-end my-auto text-gray-500 text-sm">
+        <li>
+          <a href="/about" class="hover:underline">About</a>
+        </li>
+        <li>
+          <a href="https://github.com/coditva" target="_blank" class="hover:underline">GitHub</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/coditva" target="_blank" class="hover:underline">Twitter</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</Container>

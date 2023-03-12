@@ -6,7 +6,7 @@ publishDate: "2021-05-29 05:30:00"
 title: "To extern or not to extern?"
 snippet: "We know that the extern keyword is important for variable declarations in C. But how does it affect a function declaration and when to use it?"
 image:
-  src: "__GHOST_URL__/content/images/2021/05/c-extern.png"
+  src: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
   alt: "To extern or not to extern?"
 tags: ["untagged"]
 category: ""
@@ -22,19 +22,19 @@ Before using a symbol in C, it must be declared. This is done by a **declaration
 
     // function declaration
     void funcA (int, char);
-    
+
     // function declaration + definition
     void funcB (int a)
     {
       return 10 + a;
     }
-    
+
     // variable declaration
     int a;
-    
+
     // variable declaration + definition
     int b = 0;
-    
+
 
 What is a declaration statement?
 --------------------------------
@@ -85,7 +85,7 @@ But using `extern` is a choice of taste rather than correctness. The compiler do
 * * *
 
 1.  **Global scoped** symbols are symbols which are visible outside the file in which they're declared. Any symbol which does not have the `static` modifier in the declaration and is not defined inside a function, is by default globally scoped. [↩︎](#fnref1)
-    
+
 2.  **Linking** is the last step of the compilation process. Once all the source file have been individually compiled, they are combined by replacing the external references with the actual addresses where the compiled definitions are present. See the [wikipedia for Linker](https://en.wikipedia.org/wiki/Linker_%28computing%29) for more info. [↩︎](#fnref2)
-    
+
 3.  [https://en.cppreference.com/w/c/language/storage\_duration](https://en.cppreference.com/w/c/language/storage_duration) [↩︎](#fnref3)
