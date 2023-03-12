@@ -13,9 +13,6 @@ category: ""
 ---
 
 
-What are files?
-===============
-
 You're probably aware of files as a "stream" of bytes that can be read and written to. You're also aware that files are stored in a secondary storage like a hard disk or SSD. You've most likely also heard about different file systems like FAT, NTFS, ext4, etc. But there are still some questions that need answering.
 
 Storing a file

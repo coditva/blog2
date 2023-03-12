@@ -13,24 +13,21 @@ category: ""
 ---
 
 
-**I'm now a mentor for [Postman](https://summerofcode.withgoogle.com/organizations/5554758561038336) in Google Summer of Code 2021!** I've [participated as a student](https://summerofcode.withgoogle.com/archive/2018/projects/5425846814769152/) before with [Neovim](https://neovim.io/) in 2018, but this year is the first time that I'm mentoring in GSoC. I will be mentoring 2 projects for [Newman](https://github.com/postmanlabs/newman), the _"All-weather CLI Companion for Postman."_
+I'm now a mentor for [Postman](https://summerofcode.withgoogle.com/organizations/5554758561038336) in Google Summer of Code 2021! I've [participated as a student](https://summerofcode.withgoogle.com/archive/2018/projects/5425846814769152/) before with [Neovim](https://neovim.io/) in 2018, but this year is the first time that I'm mentoring in GSoC. I will be mentoring 2 projects for [Newman](https://github.com/postmanlabs/newman), the _"All-weather CLI Companion for Postman."_
 
 What is GSoC?
 =============
 
 Google Summer of Code, or **GSoC**, is an annual program organised by Google during the summer to introduce students to open source projects and become a part of the community. In their own words:
 
-**Google Summer of Code is a global program focused on introducing students to open source software development. Students work on a 10 week programming project with an open source organisation during their break from a post secondary academic program.**
-
 [
-
-Google Summer of Code
-
-![](https://summerofcode.withgoogle.com/static/favicon/apple-touch-icon-152x152.png)
-
-![](https://summerofcode.withgoogle.com/static/img/og-image.png)
-
+![Google Summer of Code](https://summerofcode.withgoogle.com/assets/media/logo.svg)
 ](https://summerofcode.withgoogle.com/)
+
+> Google Summer of Code is a global program focused on introducing students to
+> open source software development. Students work on a 10 week programming
+> project with an open source organisation during their break from a post
+> secondary academic program.
 
 How does it work?
 -----------------

@@ -20,20 +20,22 @@ Begin with the basics
 
 Before using a symbol in C, it must be declared. This is done by a **declaration statement**. The declaration statement can be used to define the symbol as well.
 
-    // function declaration
-    void funcA (int, char);
+```c
+// function declaration
+void funcA (int, char);
 
-    // function declaration + definition
-    void funcB (int a)
-    {
-      return 10 + a;
-    }
+// function declaration + definition
+void funcB (int a)
+{
+  return 10 + a;
+}
 
-    // variable declaration
-    int a;
+// variable declaration
+int a;
 
-    // variable declaration + definition
-    int b = 0;
+// variable declaration + definition
+int b = 0;
+```
 
 
 What is a declaration statement?
@@ -48,18 +50,17 @@ For **variable declarations**, there is a slight difference. A variable declarat
 What is `extern` and when do we use it?
 ---------------------------------------
 
-Whenever you want to use a symbol you would have to declare it. **But how do you tell the compiler that you're declaring using a symbol defined in another file[\[1\]](#fn1)?** Declaring a variable would allocate memory for it again. Linking[\[2\]](#fn2) at a later stage would also fail due to conflicting names for _different_ global variables.
+Whenever you want to use a symbol you would have to declare it. **But how do you tell the compiler that you're declaring using a symbol defined in another file[\[1\]](#footnotes)?** Declaring a variable would allocate memory for it again. Linking[\[2\]](#footnotes) at a later stage would also fail due to conflicting names for _different_ global variables.
 
 To do this, we have the keyword `extern` which tells the compiler that the declaration that follows is for a symbol that is _defined elsewhere_. The compiler on seeing this does not allocate any memory for the symbol and keeps a reference to be resolved at the linking stage.
 
-* * *
 
 To `extern` or not to `extern`?
 ===============================
 
 Since a function declaration does not allocate memory at compile time, we come back to the original question – **What does `extern` do when added to a _function declaration_?** And the answer is... \*\*drumroll\*\*
 
-**Absolutely nothing!**[\[3\]](#fn3)
+**Absolutely nothing!**[\[3\]](#footnotes)
 
 Turns out that in C, every function declaration contains the `extern` keyword _implicitly_ (unless you add the `static` keyword). So, by default every function declaration means that the function is globally scoped.
 
@@ -84,8 +85,10 @@ But using `extern` is a choice of taste rather than correctness. The compiler do
 
 * * *
 
-1.  **Global scoped** symbols are symbols which are visible outside the file in which they're declared. Any symbol which does not have the `static` modifier in the declaration and is not defined inside a function, is by default globally scoped. [↩︎](#fnref1)
+### Footnotes
 
-2.  **Linking** is the last step of the compilation process. Once all the source file have been individually compiled, they are combined by replacing the external references with the actual addresses where the compiled definitions are present. See the [wikipedia for Linker](https://en.wikipedia.org/wiki/Linker_%28computing%29) for more info. [↩︎](#fnref2)
+1.  **Global scoped** symbols are symbols which are visible outside the file in which they're declared. Any symbol which does not have the `static` modifier in the declaration and is not defined inside a function, is by default globally scoped.
 
-3.  [https://en.cppreference.com/w/c/language/storage\_duration](https://en.cppreference.com/w/c/language/storage_duration) [↩︎](#fnref3)
+2.  **Linking** is the last step of the compilation process. Once all the source file have been individually compiled, they are combined by replacing the external references with the actual addresses where the compiled definitions are present. See the [wikipedia for Linker](https://en.wikipedia.org/wiki/Linker_%28computing%29) for more info.
+
+3.  [https://en.cppreference.com/w/c/language/storage\_duration](https://en.cppreference.com/w/c/language/storage_duration)

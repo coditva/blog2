@@ -24,16 +24,17 @@ const { Content } = await entry.render();
         {entry.data.category}
       </span>
       <h1
-        class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
+        class="text-5xl md:text-6xl font-serif font-bold md:tracking-tight mt-1 md:leading-1">
         {entry.data.title}
       </h1>
+      <h2
+        class="text-xl text-gray-500 font-light tracking-wider my-6">
+        {entry.data.snippet}
+      </h2>
+      <hr class="w-2/5" />
       <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
-        <span class="text-gray-400">
-          {entry.data.author}
-        </span>
-        <span class="text-gray-400">•</span>
         <time
-          class="text-gray-400"
+          class="text-gray-600"
           datetime={entry.data.publishDate.toISOString()}>
           {entry.data.publishDate.toDateString()}
         </time>
@@ -41,15 +42,18 @@ const { Content } = await entry.render();
         <div class="w-full md:w-auto flex flex-wrap gap-3">
           {
             entry.data.tags.map((tag) => (
-              <span class="text-sm text-gray-500">#{tag}</span>
+              <span class="text-sm mr-1 text-gray-500"># {tag}</span>
             ))
           }
         </div>
       </div>
     </div>
-
+    {entry.data.tldr && (<div class="mx-auto max-w-2xl tldr-prose my-10 border rounded border-solid p-5 font-serif relative">
+      <div class="absolute -top-4 left-8 text-2xl bg-white px-2">tldr;</div>
+      {entry.data.tldr}
+    </div>)}
     <div class="mx-auto prose prose-lg mt-6">
-        <Content />
+      <Content />
     </div>
   </Container>
 </Layout>

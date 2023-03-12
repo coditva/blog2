@@ -9,6 +9,7 @@ image:
   src: "https://images.unsplash.com/photo-1543514980-14becba33d86?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
   alt: "Going Mouseless on MacOS"
 tags: ["Coffee Lounge"]
+tldr: "Use chunkwm for tiling windows. Use skhd for keyboard mappings and controlling chunkwm. Use custom keyboard shortcuts in System Preferences to switch workspaces. Use CatchMouse for moving mouse between displays."
 category: ""
 ---
 
@@ -33,6 +34,6 @@ Once again, I roamed the stingy streets of the internet and came across **CatchM
 
 For now.
 
-**TL;DR** Use **chunkwm** for tiling windows. Use **skhd** for keyboard mappings and controlling chunkwm. Use custom keyboard shortcuts in System Preferences to switch workspaces. Use **CatchMouse** for moving mouse between displays.
+---
 
 You can find my configs on [my GitHub](https://github.com/coditva/dotfiles).

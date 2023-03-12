@@ -39,18 +39,20 @@ Prerequisite: Page Allocator
 
 The memory allocator depends on a page allocator to be available. A page allocator should allocate a page of a fixed size which the memory allocator will break into smaller chunks.
 
-    typedef struct page_t {
-      // ...
-      void *address;
-    };
-    
-    // allocates a new page
-    page_t * page_alloc ();
-    
-    // frees the given page
-    void * page_free (page_t page);
+```c
+// page_alloc.h
 
-page\_alloc.h
+typedef struct page_t {
+    // ...
+    void *address;
+};
+
+// allocates a new page
+page_t * page_alloc ();
+
+// frees the given page
+void * page_free (page_t page);
+```
 
 The implementation
 ==================
@@ -60,13 +62,16 @@ The interface
 
 We keep the interface similar to the unix system calls:
 
-    // allocate the given number of bytes
-    void * malloc (size_t bytes);
-    
-    // free the block previously allocated
-    void free (void *block);
+```c
+// mem_alloc.h
 
-mem\_alloc.h
+// allocate the given number of bytes
+void * malloc (size_t bytes);
+
+// free the block previously allocated
+void free (void *block);
+```
+
 
 The `malloc` returns a block for the given size. `free` frees the block.
 
@@ -75,80 +80,86 @@ The linked list of free blocks
 
 To keep a list of free memory, we need to create a linked list. This can easily be done by using the block itself as a node in the list. Allocating a new block is as simple as:
 
-    // a node in the list of free blocks
-    typedef struct free_block_t {
-        free_block_t *next; // the next block
-        free_block_t *prev; // the previous block
-        size_t       size;  // the size of the block
-    } free_block_t;
-    
-    // the head node in the list of free blocks
-    static free_block_t * free_mem_list = NULL;
-    
-    // allocates a new block from a new page
-    static free_block_t * allocate_new_block ()
-    {
-        page_t *page = page_alloc();
-        free_block_t * block = page->address;
-    
-        block->size = PAGE_SIZE;
-        block->next = NULL;
-        block->prev = NULL;
-    
-        return block;
-    }
+```c
+// mem_alloc.c
 
-mem\_alloc.c
+// a node in the list of free blocks
+typedef struct free_block_t {
+    free_block_t *next; // the next block
+    free_block_t *prev; // the previous block
+    size_t       size;  // the size of the block
+} free_block_t;
+
+// the head node in the list of free blocks
+static free_block_t * free_mem_list = NULL;
+
+// allocates a new block from a new page
+static free_block_t * allocate_new_block ()
+{
+    page_t *page = page_alloc();
+    free_block_t * block = page->address;
+
+    block->size = PAGE_SIZE;
+    block->next = NULL;
+    block->prev = NULL;
+
+    return block;
+}
+```
+
 
 First Fit allocator
 -------------------
 
 To find a block in the free blocks list, we create a helper function like so:
 
-    // find the first block that can fit the given size
-    void * find_first_fit_block (size_t bytes)
-    {
-        // if we don't have any blocks, allocate a new page
-        if (free_mem_list == NULL) {
-        	free_mem_list = allocate_new_block();
-    
-            // it is the only block in the list, return it.
-            return free_mem_list;
-        }
-    
-        block_t *block = free_mem_list;
-        int found = 0;
-    
-        while (1) {
-            if (block->size >= size) {
-                found = 1;
-                break;
-            }
-    
-            // ensure that reference to block is always valid
-            if (block->next == NULL) {
-                break;
-            }
-    
-            block = block->next;
-        }
-    
-        if (!found) {
-            // this block would always be the last block in the list.
-            // just update the `next` for it
-            block->next       = allocate_new_block();
-            block->next->prev = block;
-    
-            // set the new block as the current block
-            block = block->next;
-        }
-    
-        // either we found a bigger block or we created a new block.
-        // in either case, this block is the first fit
-        return block;
+```c
+// mem_alloc.c
+
+// find the first block that can fit the given size
+void * find_first_fit_block (size_t bytes)
+{
+    // if we don't have any blocks, allocate a new page
+    if (free_mem_list == NULL) {
+            free_mem_list = allocate_new_block();
+
+        // it is the only block in the list, return it.
+        return free_mem_list;
     }
 
-mem\_alloc.c
+    block_t *block = free_mem_list;
+    int found = 0;
+
+    while (1) {
+        if (block->size >= size) {
+            found = 1;
+            break;
+        }
+
+        // ensure that reference to block is always valid
+        if (block->next == NULL) {
+            break;
+        }
+
+        block = block->next;
+    }
+
+    if (!found) {
+        // this block would always be the last block in the list.
+        // just update the `next` for it
+        block->next       = allocate_new_block();
+        block->next->prev = block;
+
+        // set the new block as the current block
+        block = block->next;
+    }
+
+    // either we found a bigger block or we created a new block.
+    // in either case, this block is the first fit
+    return block;
+}
+```
+
 
 The interface methods
 ---------------------

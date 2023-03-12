@@ -15,6 +15,7 @@ const blogCollection = defineCollection({
     author: z.string().default('Utkarsh Maheshwari'),
     category: z.string(),
     tags: z.array(z.string()),
+    tldr: z.string().default(''),
   }),
 });
 
