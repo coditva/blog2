@@ -11,6 +11,8 @@ module.exports = {
         DEFAULT: {
           css: {
             fontFamily: theme("fontFamily.serif").join(","),
+            overflowWrap: "anywhere",
+
             '&::first-letter': {
               float: 'left',
               fontSize: "3.5em",
