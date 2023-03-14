@@ -3,7 +3,7 @@ import Container from "@components/container.astro";
 ---
 
 <Container>
-  <div class="min-w-full flex justify-between">
+  <div class="min-w-full flex flex-col md:flex-row justify-between">
     <div>
       <a href="/" class="text-2xl hover:text-blue-500 transition-colors duration-300">
         <span class="font-medium">coditva.dev</span>
@@ -12,8 +12,8 @@ import Container from "@components/container.astro";
         Introvert, systems programmer, reader, wannabe chef, nighttime philosopher.
       </p>
     </div>
-    <div class="ml-10 my-2">
-      <ul class="flex flex-col justify-center items-end my-auto text-gray-500 text-sm">
+    <div class="mt-10 md:mt-2">
+      <ul class="flex md:flex-col gap-5 md:gap-1 justify-center items-end my-auto text-gray-500 text-sm">
         <li>
           <a href="/about" class="hover:underline">About</a>
         </li>
