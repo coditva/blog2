@@ -10,16 +10,16 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-const resolvedImageWithDomain = new URL(
-  "/cover.png",
-  Astro.site
-).toString();
-
-const { title } = Astro.props;
+const { title, image } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "coditva.dev"
   : "coditva.dev";
+
+const resolvedImageWithDomain = (image && image.src) || new URL(
+  "/cover.png",
+  Astro.site
+).toString();
 ---
 
 <!DOCTYPE html>
@@ -27,10 +27,8 @@ const makeTitle = title
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
       description="Introvert, systems programmer, reader, wannabe chef, nighttime philosopher."
@@ -44,7 +42,7 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `coditva.dev`,
+          title: `coditva.dev - Introvert, systems programmer, reader, wannabe chef, nighttime philosopher.`,
           image: resolvedImageWithDomain,
         },
         image: {
