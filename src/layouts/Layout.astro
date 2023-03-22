@@ -42,7 +42,7 @@ const resolvedImageWithDomain = (image && image.src) || new URL(
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `coditva.dev - Introvert, systems programmer, reader, wannabe chef, nighttime philosopher.`,
+          title: title || `coditva.dev - Introvert, systems programmer, reader, wannabe chef, nighttime philosopher.`,
           image: resolvedImageWithDomain,
         },
         image: {
