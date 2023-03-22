@@ -53,7 +53,7 @@ Consider the table in the figure below. The file `abc` starts from block 2. The 
 
 If the user now wants to write some more content into the file, we just add another block and put its address in the "next block" of 3.
 
-![](__GHOST_URL__/content/images/2021/05/FAT.png)
+![](/images/FAT.png)
 
 A small File Allocation Table
 
