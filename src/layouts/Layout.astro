@@ -10,7 +10,7 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-const { title, image } = Astro.props;
+const { title, image, description } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "coditva.dev"
@@ -31,7 +31,7 @@ const resolvedImageWithDomain = (image && image.src) || new URL(
     <meta name="generator" content={Astro.generator} />
     <SEO
       title={makeTitle}
-      description="Introvert, systems programmer, reader, wannabe chef, nighttime philosopher."
+      description={description || "Introvert, systems programmer, reader, wannabe chef, nighttime philosopher."}
       canonical={canonicalURL}
       twitter={{
         creator: "@coditva",
