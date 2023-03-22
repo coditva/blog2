@@ -5,7 +5,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://coditva.dev",
+  site: "https://" + (process.env.VERCEL_URL || "coditva.dev"),
   integrations: [
     tailwind(),
     image({
